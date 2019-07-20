@@ -1,12 +1,13 @@
 'use strict';
 const lti = require('ims-lti');
-// MemoryStore probably shouldn't be used in production
+// MemoryStore shouldn't be used in production
 const nonceStore = new lti.Stores.MemoryStore();
 
 const secrets = {
-  key: 'secret'
+  demo: 'xzc342AScx',
+  demo2: 'dh43fvL-ew'
 };
-
+// secrets should be stored securely in a production app
 const getSecret = (consumerKey, callback) => {
 	const secret = secrets[consumerKey];
 	if (secret) {
@@ -33,14 +34,14 @@ exports.handleLaunch = (req, res, next) => {
 		return next(err);
 	}
 
-	getSecret(consumerKey, function(err, consumerSecret) {
+	getSecret(consumerKey, (err, consumerSecret) => {
 		if (err) {
 			return next(err);
 		}
 
 		const provider = new lti.Provider(consumerKey, consumerSecret, nonceStore, lti.HMAC_SHA1);
 
-		provider.valid_request(req, function(err, isValid) {
+		provider.valid_request(req, (err, isValid) => {
       if (err) {
         return next(err);
       }

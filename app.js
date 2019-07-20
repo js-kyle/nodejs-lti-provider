@@ -6,17 +6,17 @@ const session = require('express-session');
 const lti = require('./lti');
 
 const port = process.env.PORT || 3000;
-
+// this express server should be secured/hardened for production use
 const app = express();
 
 app.set('view engine', 'pug');
-
+// memory store shouldn't be used in production
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev',
   resave: false,
   saveUninitialized: true,
 }));
-
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.set('json spaces', 2);
