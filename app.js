@@ -17,7 +17,7 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-bodyParser.urlencoded({extended: false});
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.set('json spaces', 2);
 
