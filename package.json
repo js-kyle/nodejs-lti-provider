@@ -4,6 +4,7 @@
   "description": "Example Node.js LTI provider",
   "main": "app.js",
   "scripts": {
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
