@@ -6,18 +6,18 @@ const session = require('express-session');
 const lti = require('./lti');
 
 const port = process.env.PORT || 3000;
-
+// this express server should be secured/hardened for production use
 const app = express();
 
 app.set('view engine', 'pug');
-
+// memory store shouldn't be used in production
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev',
   resave: false,
   saveUninitialized: true,
 }));
-
-bodyParser.urlencoded({extended: false});
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.set('json spaces', 2);
 
@@ -29,7 +29,11 @@ app.get('/', (req, res, next) => {
 
 app.get('/application', (req, res, next) => {
   if (req.session.userId) {
-    res.render('index', { title: 'Hey', message: 'Hello there!' })
+    return res.render('index', {
+      username: req.session.username,
+      ltiConsumer: req.session.ltiConsumer,
+      userId: req.session.userId
+    })
   } else {
     next(new Error('Session invalid. Please login via LTI to use this application.'));
   }
