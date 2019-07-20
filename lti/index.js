@@ -41,22 +41,23 @@ exports.handleLaunch = (req, res, next) => {
 		const provider = new lti.Provider(consumerKey, consumerSecret, nonceStore, lti.HMAC_SHA1);
 
 		provider.valid_request(req, function(err, isValid) {
-			if (err || !isValid) {
-				return next(err || new Error('invalid lti'));
-			}
+      if (err) {
+        return next(err);
+      }
+      if (isValid) {
+        req.session.regenerate(err => {
+          if (err) next(err);
 
-			let body = {};
-			[
-				'roles', 'admin', 'alumni', 'content_developer', 'guest', 'instructor',
-				'manager', 'member', 'mentor', 'none', 'observer', 'other', 'prospective_student',
-				'student', 'ta', 'launch_request', 'username', 'userId', 'mentor_user_ids',
-				'context_id', 'context_label', 'context_title', 'body'
-			].forEach(function(key) {
-				body[key] = provider[key];
-			});
+          req.session.contextId = provider.context_id;
+          req.session.userId = provider.userId;
+          req.session.username = provider.username;
+          req.session.ltiConsumer = provider.body.tool_consumer_instance_guid;
 
-			
-			return res.status(200).json(body);
+          return res.redirect(301, '/application');
+        });
+      } else {
+        return next(err);
+      }
 		});
 	});
 };
