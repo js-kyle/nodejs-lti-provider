@@ -1,0 +1,5 @@
+{
+  "name": "nodejs-lti-provider",
+  "description": "Example Node.js LTI provider",
+  "repository": "https://github.com/js-kyle/nodejs-lti-provider"
+}
