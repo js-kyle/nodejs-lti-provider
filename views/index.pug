@@ -17,5 +17,9 @@ html(lang='en')
       .row
         .col-lg-12.text-center
           h1.mt-5 Welcome, #{username}
-          p.lead You have come from #{ltiConsumer} where your userId is #{userId}.
-          p Congrats on your successful LTI connection
+          p.lead You have come from #{ltiConsumer} where your userId is #{userId}, and email address is #{email}.
+          if isTutor
+            p You are listed as a tutor for this context, #{context_id}
+          else
+            p You are listed as a learner for this context, #{context_id}
+          p Congrats on your successful LTI connection!

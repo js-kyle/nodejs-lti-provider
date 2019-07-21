@@ -48,11 +48,13 @@ exports.handleLaunch = (req, res, next) => {
       if (isValid) {
         req.session.regenerate(err => {
           if (err) next(err);
-
+          req.session.email = provider.body.lis_person_contact_email_primary;
           req.session.contextId = provider.context_id;
           req.session.userId = provider.userId;
           req.session.username = provider.username;
           req.session.ltiConsumer = provider.body.tool_consumer_instance_guid;
+          req.session.isTutor = provider.instructor === true;
+          req.session.context_id = provider.context_id;
 
           return res.redirect(301, '/application');
         });
