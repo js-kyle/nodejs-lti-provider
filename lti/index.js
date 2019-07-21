@@ -62,5 +62,5 @@ exports.handleLaunch = (req, res, next) => {
         return next(err);
       }
     });
-    });
+  });
 };
