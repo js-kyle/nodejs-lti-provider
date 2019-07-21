@@ -30,9 +30,12 @@ app.get('/', (req, res, next) => {
 app.get('/application', (req, res, next) => {
   if (req.session.userId) {
     return res.render('index', {
+      email: req.session.email,
       username: req.session.username,
       ltiConsumer: req.session.ltiConsumer,
-      userId: req.session.userId
+      userId: req.session.userId,
+      isTutor: req.session.isTutor,
+      context_id: req.session.context_id
     })
   } else {
     next(new Error('Session invalid. Please login via LTI to use this application.'));
