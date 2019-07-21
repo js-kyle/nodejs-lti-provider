@@ -34,10 +34,10 @@ exports.handleLaunch = (req, res, next) => {
     return next(err);
   }
 
-	getSecret(consumerKey, (err, consumerSecret) => {
-		if (err) {
-			return next(err);
-		}
+  getSecret(consumerKey, (err, consumerSecret) => {
+    if (err) {
+      return next(err);
+    }
 
     const provider = new lti.Provider(consumerKey, consumerSecret, nonceStore, lti.HMAC_SHA1);
 
