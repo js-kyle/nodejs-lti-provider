@@ -48,7 +48,7 @@ exports.handleLaunch = (req, res, next) => {
       if (isValid) {
         req.session.regenerate(err => {
           if (err) next(err);
-
+          console.log(provider);
           req.session.contextId = provider.context_id;
           req.session.userId = provider.userId;
           req.session.username = provider.username;
