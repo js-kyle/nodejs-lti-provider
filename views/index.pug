@@ -6,6 +6,12 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='description', content='nodejs-lti-provider')
     meta(name='author', content='Kyle Martin')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
   body
-    h1 Welcome to the example application, you are connected as #{username}. You have come from #{ltiConsumer} where you userId is #{userId}.
+    .container
+      h1 Welcome, #{username}
+      p You have come from #{ltiConsumer} where your userId is #{userId}.
+      p Congrats on your successful LTI connection
     hr
