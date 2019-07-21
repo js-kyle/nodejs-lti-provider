@@ -2,12 +2,12 @@
 const lti = require('ims-lti');
 // MemoryStore shouldn't be used in production. Timestamps must be valid within a 5 minute grace period.
 const nonceStore = new lti.Stores.MemoryStore();
-
+// secrets should be stored securely in a production app
 const secrets = {
   demo: 'xzc342AScx',
   demo2: 'dh43fvL-ew'
 };
-// secrets should be stored securely in a production app
+
 const getSecret = (consumerKey, callback) => {
 	const secret = secrets[consumerKey];
 	if (secret) {
