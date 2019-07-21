@@ -6,12 +6,16 @@
 </h1>
 
 <h4 align="center">A minimal LTI provider example using Node.js.</h4>
-
 <p align="center">
     <img alt="GitHub" src="https://img.shields.io/github/license/js-kyle/nodejs-lti-provider.svg">
 </p>
 
-A working demo of this application can be found at https://nodejs-lti-provider.herokuapp.com
+A working demo of this application can be found at https://nodejs-lti-provider.herokuapp.com, or, you can deploy your own
+
+<a href="https://heroku.com/deploy">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
+
 ## Overview
 
 This project is a minimal example of an LTI provider application. It contains:
