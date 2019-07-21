@@ -1,6 +1,6 @@
 'use strict';
 const lti = require('ims-lti');
-// MemoryStore shouldn't be used in production
+// MemoryStore shouldn't be used in production. Timestamps must be valid within a 5 minute grace period.
 const nonceStore = new lti.Stores.MemoryStore();
 
 const secrets = {

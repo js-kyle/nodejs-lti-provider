@@ -10,8 +10,14 @@ html(lang='en')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
   body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.static-top
+      .container
+        a.navbar-brand(href='#') Node.js LTI demo
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
     .container
-      h1 Welcome, #{username}
-      p You have come from #{ltiConsumer} where your userId is #{userId}.
-      p Congrats on your successful LTI connection
-    hr
+      .row
+        .col-lg-12.text-center
+          h1.mt-5 Welcome, #{username}
+          p.lead You have come from #{ltiConsumer} where your userId is #{userId}.
+          p Congrats on your successful LTI connection
